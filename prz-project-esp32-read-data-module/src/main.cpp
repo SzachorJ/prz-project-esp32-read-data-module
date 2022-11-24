@@ -14,7 +14,6 @@ void setup()
 
 void loop()
 {
-
-  analogWrite(pin_a, pwm);
+  // dupa
   // put your main code here, to run repeatedly:
 }
