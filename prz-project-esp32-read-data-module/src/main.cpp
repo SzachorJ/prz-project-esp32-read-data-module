@@ -14,6 +14,5 @@ void setup()
 
 void loop()
 {
-  // dupa
   // put your main code here, to run repeatedly:
 }
