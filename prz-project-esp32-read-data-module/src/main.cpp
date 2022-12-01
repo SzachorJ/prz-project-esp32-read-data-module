@@ -12,27 +12,29 @@
 
 #define OIL_T_OUT 0
 #define OIL_P_OUT 2
-#define WAT_T_OUT 15 
+#define WAT_T_OUT 15
 
 #define RXD1 9
 #define TXD1 10
 
-pinSetup(){                       
-  pinMode(V_S,INPUT);
-  pinMode(V_C,INPUT);
-  pinMode(RPM_S,INPUT);
-  pinMode(RMP_V,INPUT);
-  pinMode(OIL_T_IN,INPUT);
-  pinMode(OIL_P_IN,INPUT);
-  pinMode(WAT_T_IN,INPUT);
-  pinMode(FUEL,INPUT);
-  pinMode(ALL,INPUT);
+void pinSetup()
+{
+  pinMode(V_S, INPUT);
+  pinMode(V_C, INPUT);
+  pinMode(RPM_S, INPUT);
+  pinMode(RMP_V, INPUT);
+  pinMode(OIL_T_IN, INPUT);
+  pinMode(OIL_P_IN, INPUT);
+  pinMode(WAT_T_IN, INPUT);
+  pinMode(FUEL, INPUT);
+  pinMode(ALL, INPUT);
 
-  pinMode(OIL_T_OUT,OUTPUT);
-  pinMode(OIL_P_OUT,OUTPUT);
-  pinMode(WAT_T_OUT,OUTPUT);
+  pinMode(OIL_T_OUT, OUTPUT);
+  pinMode(OIL_P_OUT, OUTPUT);
+  pinMode(WAT_T_OUT, OUTPUT);
 }
-analogReadInput(){        
+void analogReadInput()
+{
   analogRead(V_S);
   analogRead(V_C);
   analogRead(RPM_S);
@@ -43,20 +45,21 @@ analogReadInput(){
   analogRead(FUEL);
   analogRead(ALL);
 }
-void setup() {
+void setup()
+{
   pinSetup();
-  
-  Serial1.begin(baud-rate, protocol, RX pin, TX pin);//dodac baud
+
+  // Serial1.begin(baud-rate, protocol, RX pin, TX pin); // dodac baud
   Serial.begin(115200);
-  //Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
+  // Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
   Serial1.begin(9600, SERIAL_8N1, RXD1, TXD1);
-  Serial.println("Serial Txd is on pin: "+String(TX));
-  Serial.println("Serial Rxd is on pin: "+String(RX));
+  Serial.println("Serial Txd is on pin: " + String(TX));
+  Serial.println("Serial Rxd is on pin: " + String(RX));
   // put your setup code here, to run once:
 }
 
-void loop() {
+void loop()
+{
   analogReadInput();
   // put your main code here, to run repeatedly:
 }
-
