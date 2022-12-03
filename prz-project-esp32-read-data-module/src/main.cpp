@@ -47,7 +47,7 @@ float *analogReadInput()
   float x[] = {x1, x2, x3, x4, x5, x6, x7, x8, x9};
   return x; // czy te zmienne sa niszczone po returnie?
 }
-void analogReadAverage()
+float *analogReadAverage()
 {
   float x[90] = {};
   for (int i = 0, j = 0; i < 90; j = 0)
@@ -61,6 +61,17 @@ void analogReadAverage()
     }
     // czasomierz 100ms
   }
+  float y[9] = {};
+  for (int i = 0, j = 0; j < 9; i = 0, j++)
+  {
+    while (i < 90)
+    {
+      y[j] += x[j + i];
+      i += 9;
+    }
+    y[j] = y[j] / 10;
+  }
+  return y;
 }
 
 void setup()
