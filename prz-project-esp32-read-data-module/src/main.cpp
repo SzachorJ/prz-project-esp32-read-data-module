@@ -33,18 +33,47 @@ void pinSetup()
   pinMode(OIL_P_OUT, OUTPUT);
   pinMode(WAT_T_OUT, OUTPUT);
 }
-void analogReadInput()
+float *analogReadInput()
 {
-  analogRead(V_S);
-  analogRead(V_C);
-  analogRead(RPM_S);
-  analogRead(RMP_V);
-  analogRead(OIL_T_IN);
-  analogRead(OIL_P_IN);
-  analogRead(WAT_T_IN);
-  analogRead(FUEL);
-  analogRead(ALL);
+  float x1 = analogRead(V_S);
+  float x2 = analogRead(V_C);
+  float x3 = analogRead(RPM_S);
+  float x4 = analogRead(RMP_V);
+  float x5 = analogRead(OIL_T_IN);
+  float x6 = analogRead(OIL_P_IN);
+  float x7 = analogRead(WAT_T_IN);
+  float x8 = analogRead(FUEL);
+  float x9 = analogRead(ALL);
+  float x[] = {x1, x2, x3, x4, x5, x6, x7, x8, x9};
+  return x; // czy te zmienne sa niszczone po returnie?
 }
+float *analogReadAverage()
+{
+  float x[90] = {};
+  for (int i = 0, j = 0; i < 90; j = 0)
+  {
+    float *l = analogReadInput();
+    while (j < 9)
+    {
+      x[i] = l[j];
+      i++;
+      j++;
+    }
+    // czasomierz 100ms
+  }
+  float y[9] = {};
+  for (int i = 0, j = 0; j < 9; i = 0, j++)
+  {
+    while (i < 90)
+    {
+      y[j] += x[j + i];
+      i += 9;
+    }
+    y[j] = y[j] / 10;
+  }
+  return y;
+}
+
 void setup()
 {
   pinSetup();
