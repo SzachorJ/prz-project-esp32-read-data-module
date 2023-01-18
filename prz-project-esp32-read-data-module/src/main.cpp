@@ -30,57 +30,65 @@ String logString;
 
 uint16_t part = 1;
 
+#define V_S 36
+#define V_C 37
+#define RPM_S 38
+#define RMP_V 39
+#define OIL_T_IN 32
+#define OIL_P_IN 33
+#define WAT_T_IN 34
+#define FUEL 35
+#define ALL 4
+
+#define OIL_T_OUT 0
+#define OIL_P_OUT 2
+#define WAT_T_OUT 15
+
+#define RXD1 9
+#define TXD1 10
+
+void pinSetup()
+{
+  pinMode(V_S, INPUT);
+  pinMode(V_C, INPUT);
+  pinMode(RPM_S, INPUT);
+  pinMode(RMP_V, INPUT);
+  pinMode(OIL_T_IN, INPUT);
+  pinMode(OIL_P_IN, INPUT);
+  pinMode(WAT_T_IN, INPUT);
+  pinMode(FUEL, INPUT);
+  pinMode(ALL, INPUT);
+
+  pinMode(OIL_T_OUT, OUTPUT);
+  pinMode(OIL_P_OUT, OUTPUT);
+  pinMode(WAT_T_OUT, OUTPUT);
+}
+void analogReadInput()
+{
+  analogRead(V_S);
+  analogRead(V_C);
+  analogRead(RPM_S);
+  analogRead(RMP_V);
+  analogRead(OIL_T_IN);
+  analogRead(OIL_P_IN);
+  analogRead(WAT_T_IN);
+  analogRead(FUEL);
+  analogRead(ALL);
+}
 void setup()
 {
-  Serial.begin(SERIAL_BAUD);
-  BTSerial.begin("test");
-  mainGaugePinInitialize();
-  secondaryGaugePinInitialize();
+  pinSetup();
+
+  // Serial1.begin(baud-rate, protocol, RX pin, TX pin); // dodac baud
+  Serial.begin(115200);
+  // Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
+  Serial1.begin(9600, SERIAL_8N1, RXD1, TXD1);
+  Serial.println("Serial Txd is on pin: " + String(TX));
+  Serial.println("Serial Rxd is on pin: " + String(RX));
+  // put your setup code here, to run once:
 }
 
 void loop()
 {
-  programTime = millis();
-  int output = 0;
-  if (programTime - readMainValuesIntervalTime > 10)
-  {
-    readMainValues = readMainGaugeValues();
-    averageMainValues.RPM_SIN = averageMainValues.RPM_SIN + readMainValues.RPM_SIN;
-    averageMainValues.RPM_COS = averageMainValues.RPM_COS + readMainValues.RPM_COS;
-    averageMainValues.V_SIN = averageMainValues.V_SIN + readMainValues.V_SIN;
-    averageMainValues.V_COS = averageMainValues.V_COS + readMainValues.V_COS;
-
-    readSecondaryValues = readSecondaryGaugeValues();
-    averageSecondaryValues.WT = averageSecondaryValues.WT + readSecondaryValues.WT;
-    averageSecondaryValues.OP = averageSecondaryValues.OP + readSecondaryValues.OP;
-    averageSecondaryValues.OT = averageSecondaryValues.OT + readSecondaryValues.OT;
-
-    count++;
-    if (programTime - sendTestDataIntervalTime > 100)
-    {
-      secondaryTestOutputString = testSecondary(averageSecondaryValues.WT / count, averageSecondaryValues.OP / count, averageSecondaryValues.OT / count);
-      mainTestOutputString = testMain(averageMainValues.RPM_SIN / count, averageMainValues.RPM_COS / count, averageMainValues.V_SIN / count, averageMainValues.V_COS / count);
-      logString = String(counter) + "-" + mainTestOutputString + "-" + secondaryTestOutputString;
-      logData(logString);
-      averageMainValues = {0, 0, 0, 0};
-      averageSecondaryValues = {0, 0, 0};
-      count = 0;
-      counter++;
-
-      if (programTime - displayValuesIntervalTime > 1000)
-      {
-        mainBtOutputString = assembleMainBtOutputString();
-        secondaryBtOutputString = assembleSecondaryBtOutputString();
-        BTSerial.print(mainBtOutputString);
-        BTSerial.print("\n");
-        BTSerial.print(secondaryBtOutputString);
-        BTSerial.print("\n");
-
-        displayValuesIntervalTime = programTime;
-      }
-      sendTestDataIntervalTime = programTime;
-    }
-
-    readMainValuesIntervalTime = programTime;
-  }
+  // put your main code here, to run repeatedly:
 }
