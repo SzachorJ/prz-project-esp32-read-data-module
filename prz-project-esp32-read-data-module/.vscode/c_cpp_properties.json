@@ -10,6 +10,7 @@
             "includePath": [
                 "C:/Users/11fix/Desktop/piomtr/prz-project-esp32-read-data-module/prz-project-esp32-read-data-module/include",
                 "C:/Users/11fix/Desktop/piomtr/prz-project-esp32-read-data-module/prz-project-esp32-read-data-module/src",
+                "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -201,7 +202,6 @@
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
-                "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/DNSServer/src",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM/src",
                 "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
@@ -237,6 +237,7 @@
                 "path": [
                     "C:/Users/11fix/Desktop/piomtr/prz-project-esp32-read-data-module/prz-project-esp32-read-data-module/include",
                     "C:/Users/11fix/Desktop/piomtr/prz-project-esp32-read-data-module/prz-project-esp32-read-data-module/src",
+                    "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -428,7 +429,6 @@
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
-                    "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/DNSServer/src",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM/src",
                     "C:/Users/11fix/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
