@@ -4,22 +4,15 @@
 #include <Arduino.h>
 #include <math.h>
 
-#define MR_RPM_SIN 33
-#define MR_RPM_COS 25
-#define MR_V_SIN 26
-#define MR_V_COS 27
+#define MR_RPM_SIN 35
+#define MR_RPM_COS 32
+#define MR_V_SIN 33
+#define MR_V_COS 25
 
-#define MINIMUM_RPM 500
-#define MAXIMUM_RPM 7000
-
-#define MINIMUM_V 0
-#define MAXIMUM_V 220
-
-#define MINIMUM_RPM_SIN_SIGNAL 220
-#define MAXIMUM_RPM_COS_SIGNAL 2160
-
-#define MINIMUM_V_SIN_SIGNAL 150
-#define MAXIMUM_V_COS_SIGNAL 2130
+#define MR_RPM_SIN_POSITIVE 26
+#define MR_RPM_COS_POSITIVE 27
+#define MR_V_SIN_POSITIVE 12
+#define MR_V_COS_POSITIVE 14
 
 typedef struct _main_gauge_read_
 {
@@ -29,11 +22,24 @@ typedef struct _main_gauge_read_
     uint16_t V_COS;
 } MAIN_GAUGE_READ;
 
+typedef struct _average_main_gauge_read_
+{
+    uint16_t avgRPM;
+    uint16_t avgV;
+} AVERAGE_MAIN_GAUGE_READ;
+
+typedef struct _check_if_positive_
+{
+    uint16_t RPM_SIN_P;
+    uint16_t RPM_COS_P;
+    uint16_t V_SIN_P;
+    uint16_t V_COS_P;
+} CHECK_IF_POSITIVE;
+
 void mainGaugePinInitialize();
 
 MAIN_GAUGE_READ readMainGaugeValues();
 
-String assembleMainBtOutputString();
+CHECK_IF_POSITIVE readMainPositivity();
 
-String testMain(int a, int b, int c, int d);
 #endif
